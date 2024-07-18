@@ -1,4 +1,8 @@
-﻿using System;
+﻿using App.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 
 using System.Linq;
@@ -9,9 +13,9 @@ namespace App.Persistence
 {
     public static class Registration
     {
-        public static void Registration(this IServiceColletion services,IConfiguration config)
+        public static void AddPersistance(this IServiceCollection services,IConfiguration config)
         {
-            services.AddDbContext<MyDbContext>(opt=>opt.Use)
+            services.AddDbContext<MyDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("DefaultConnetion")));
         }
     }
 }

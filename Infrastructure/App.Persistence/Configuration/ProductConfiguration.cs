@@ -25,12 +25,12 @@ namespace App.Persistence.Configuration
                 BrandId = 1,
                 Price = faker.Finance.Amount(10, 1000),
                 Discount = faker.Random.Decimal(0, 10),
-                IsDeleted=false
+                IsDeleted =false
 
             };
             Product product2 = new Product()
             {
-                Id = 1,
+                Id = 2,
                 Title = faker.Commerce.ProductName(),
                 Description = faker.Commerce.ProductDescription(),
                 CreatedDate = DateTime.Now,
