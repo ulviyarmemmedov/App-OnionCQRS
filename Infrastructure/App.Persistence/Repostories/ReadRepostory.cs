@@ -1,4 +1,4 @@
-﻿using App.Application.Repostories;
+﻿using App.Application.Interfaces.Repostories;
 using App.Domain.Common;
 using App.Persistence.Context;
 using Microsoft.EntityFrameworkCore;

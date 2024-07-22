@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc.TagHelpers;
-
+using App.Application;
 using App.Persistence;
+using App.Mapper;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,6 +18,9 @@ builder.Configuration
     .AddJsonFile("appsettings.json", optional: false)
     .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 builder.Services.AddPersistance(builder.Configuration);
+builder.Services.AddAplication();
+builder.Services.AppCustomMapper();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

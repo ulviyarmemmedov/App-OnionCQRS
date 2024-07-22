@@ -7,19 +7,19 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Application.Repostories
+namespace App.Application.Interfaces.Repostories
 {
-    public interface IReadRepostory<T> where T : class,IBaseEntity,new()
+    public interface IReadRepostory<T> where T : class, IBaseEntity, new()
     {
         Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null,
-            Func<IQueryable<T>,IIncludableQueryable<T,object>>? include=null
-            ,Func<IQueryable<T>,IOrderedQueryable<T>>? orderby=null,
-            bool enableTracking=false);
+            Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null
+            , Func<IQueryable<T>, IOrderedQueryable<T>>? orderby = null,
+            bool enableTracking = false);
 
         Task<List<T>> GetAllByPagingAsync(Expression<Func<T, bool>>? predicate = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null
             , Func<IQueryable<T>, IOrderedQueryable<T>>? orderby = null,
-            bool enableTracking = false,int currentPage=1,int pageSize=3);
+            bool enableTracking = false, int currentPage = 1, int pageSize = 3);
 
         Task<T> GetAsync(Expression<Func<T, bool>> predicate,
             Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,

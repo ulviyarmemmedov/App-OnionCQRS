@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Application.Repostories
+namespace App.Application.DTOs
 {
-    public interface IWriteRepostory<T> where T:class,IQueryable
+    public class BrandDto
     {
+        public string Name { get; set; }
     }
 }
