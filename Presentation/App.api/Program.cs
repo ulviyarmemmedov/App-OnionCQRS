@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Mvc.TagHelpers;
+using App.Application;
+using App.Persistence;
+using App.Mapper;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,16 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+var env = builder.Environment;
+
+builder.Configuration
+    .SetBasePath(env.ContentRootPath)
+    .AddJsonFile("appsettings.json", optional: false)
+    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+builder.Services.AddPersistance(builder.Configuration);
+builder.Services.AddAplication();
+builder.Services.AppCustomMapper();
 
 var app = builder.Build();
 
